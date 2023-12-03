@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mary's Play Haven - Administração - Ficha do Produto</title>
+    <style>
+        /* Adicione os estilos conforme necessário */
+        /* ... (Estilos anteriores) ... */
+
+        /* Estilos para os campos de formulário */
+        .formulario {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .formulario label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .formulario input,
+        .formulario select,
+        .formulario textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        .formulario button {
+            background-color: #2066CF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header style="background-color: #EFD6FF; color: black; padding: 1rem; text-align: center;">
+            <!-- Inclusão do Logo e Nome -->
+            <img src="caminho/para/seu/logo.png" alt="Logo Mary's Play Haven" style="max-width: 100px;">
+            <h1>Mary's Play Haven</h1>
+        </header>
+
+       <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="/catalogo?categoria=Musical">Musical</a></li>
+                <li><a href="/catalogo?categoria=Imaginativo">Imaginativo</a></li>
+                <li><a href="/catalogo?categoria=Sensorial">Sensorial</a></li>
+                <li><a href="/catalogo?categoria=Educativa">Educativa</a></li>
+                <li><a href="/catalogo?categoria=AtividadeFisica">Atividade Física</a></li>
+                <li><a href="/catalogo?categoria=QuebraCabeca">Quebra-Cabeça</a></li>
+                <li><a href="#">Administração (ADM)</a></li>
+                <li><a href="#">Equipe</a></li>
+            </ul>
+        </div>
+
+        <div class="main">
+            <!-- Área de interação -->
+            <div id="breadcrumb" style="margin-bottom: 1rem;">
+                <!-- Caminho "Home > Administração > Ficha do Produto" -->
+                <span th:text="'Home > Administração > Ficha do Produto'"></span>
+            </div>
+
+            <h2>Ficha do Produto</h2>
+
+            <!-- Formulário de Cadastro/Alteração -->
+            <div class="formulario">
+                <form>
+                    <label for="id">ID do Produto:</label>
+                    <input type="text" id="id" name="id" readonly>
+
+                    <label for="nome">Nome do Produto:</label>
+                    <input type="text" id="nome" name="nome" required>
+
+                    <label for="marca">Marca:</label>
+                    <input type="text" id="marca" name="marca" required>
+
+                    <label for="beneficios">Benefícios:</label>
+                    <div>
+                        <input type="checkbox" id="desenvolvimentoAutonomia" name="beneficios" value="DESENVOLVIMENTO_DA_AUTONOMIA">
+                        <label for="desenvolvimentoAutonomia">Desenvolvimento da Autonomia</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="estimuloConcentracao" name="beneficios" value="ESTIMULO_A_CONCENTRACAO">
+                        <label for="estimuloConcentracao">Estímulo à Concentração</label>
+                    </div>
+                    <!-- Adicione as demais opções de benefícios aqui -->
+
+                    <label for="categoria">Categoria:</label>
+                    <div>
+                        <input type="checkbox" id="musical" name="categoria" value="MUSICAL">
+                        <label for="musical">Musical</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="imaginativo" name="categoria" value="IMAGINATIVO">
+                        <label for="imaginativo">Imaginativo</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="sensorial" name="categoria" value="SENSORIAL">
+                        <label for="sensorial">Sensorial</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="educativa" name="categoria" value="EDUCATIVA">
+                        <label for="educativa">Educativa</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="atividadeFisica" name="categoria" value="ATIVIDADE_FISICA">
+                        <label for="atividadeFisica">Atividade Física</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="quebraCabeca" name="categoria" value="QUEBRA_CABECA">
+                        <label for="quebraCabeca">Quebra-Cabeça</label>
+                    </div>
+                    <!-- Adicione as demais opções de categoria aqui -->
+
+                    <label for="catalogo">Catálogo:</label>
+                    <div>
+                        <input type="checkbox" id="catalogo1" name="catalogo" value="CATALOGO1">
+                        <label for="catalogo1">Desenvolvimento da Autonomia</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="catalogo2" name="catalogo" value="CATALOGO2">
+                        <label for="catalogo2">Estimulo a Criatividade e Imaginação</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="catalogo3" name="catalogo" value="CATALOGO3">
+                        <label for="catalogo3">Estimulo a Concentração</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="catalogo4" name="catalogo" value="CATALOGO4">
+                        <label for="catalogo4">Desenvolvimetno da Coordenação Motora</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="catalogo5" name="catalogo" value="CATALOGO5">
+                        <label for="catalogo5">Aprendizado Sensorial</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="catalogo6" name="catalogo" value="CATALOGO6">
+                        <label for="catalogo6">Desenvolvimento Cognitivo </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="catalogo7" name="catalogo" value="CATALOGO7">
+                        <label for="catalogo7">Desenvolvimento Social e Emocional</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="catalogo8" name="catalogo" value="CATALOGO8">
+                        <label for="catalogo8">Material Sustentavel e Duravel</label>
+                    </div>
+                    <!-- Adicione as demais opções de catálogo aqui -->
+
+                    <label for="descricao">Descrição:</label>
+                    <textarea id="descricao" name="descricao" required></textarea>
+
+                    <label for="imagem">Imagem do Produto:</label>
+                    <input type="file" id="imagem" name="imagem" accept="image/png, image/jpeg">
+
+                    <button type="button" onclick="salvarProduto()">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background-color: #2066CF; color: white; padding: 1rem; text-align: center;">
+        &copy; 2023 Mary's Play Haven. Todos os direitos reservados.
+    </footer>
+
+    <script>
+        function salvarProduto() {
+            // Adicione aqui a lógica para enviar os dados ao banco de dados
+            alert("Produto salvo com sucesso!");
+        }
+    </script>
+</body>
+
+</html>
