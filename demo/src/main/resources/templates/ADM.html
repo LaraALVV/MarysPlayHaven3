@@ -5,80 +5,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mary's Play Haven - Administração</title>
-    <style>
-        /* Adicione os estilos conforme necessário */
-        /* ... (Estilos anteriores) ... */
+    <link rel="stylesheet" href="../style/style.css"> <!--Link da folha de estilo (do arquivo CSS, tem que ser o caminho de onde está o arquivo)-->
+    <link rel="stylesheet" href="../style/ADM.css">
 
-        /* Estilos para a tabela de administração */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #2066CF;
-            color: white;
-        }
-
-        /* Estilos para os botões */
-        .acao-btn {
-            padding: 5px 10px;
-            margin-right: 5px;
-            text-decoration: none;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .alterar-btn {
-            background-color: #4CAF50;
-        }
-
-        .excluir-btn {
-            background-color: #FF0000;
-        }
-
-        .novo-btn {
-            background-color: #2066CF;
-        }
-    </style>
+        
 </head>
 
 <body>
+    <header>
+        <nav class="nav">
+            <img src="../images/blocos.png" class="logo">
+            <h1 class="titulo">Mary's<br><span class="mary">Play Haven</span></h1>
+        </nav>    
+    </header>
+
     <div class="container">
-        <header style="background-color: #EFD6FF; color: black; padding: 1rem; text-align: center;">
-            <!-- Inclusão do Logo e Nome -->
-            <img src="caminho/para/seu/logo.png" alt="Logo Mary's Play Haven" style="max-width: 100px;">
-            <h1>Mary's Play Haven</h1>
-        </header>
+       <section class="sidebar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <img src="../images/botao-de-inicio.png" alt="#" class="icon">
+                        <span class="link-text">Home</span>
+                    </a>
+                </li>
 
-        <div class="sidebar">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Musical</a></li>
-                <li><a href="#">Imaginativo</a></li>
-                <li><a href="#">Sensorial</a></li>
-                <li><a href="#">Educativa</a></li>
-                <li><a href="#">Atividade Física</a></li>
-                <li><a href="#">Quebra-Cabeça</a></li>
-                <li><a href="#">Administração (ADM)</a></li>
-                <li><a href="#">Equipe</a></li>
+                <li class="nav-item">
+                    <a href="/catalogo?categoria=Musical" class="nav-link">
+                        <img src="../images/nota-musical.png" alt="#" class="icon">
+                        <span class="link-text">Musical</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/catalogo?categoria=Imaginativo" class="nav-link">
+                        <img src="../images/varinha-magica.png" alt="#" class="icon">
+                        <span class="link-text">Imaginativo</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/catalogo?categoria=Sensorial" class="nav-link">
+                        <img src="../images/cerebro-humano.png" alt="#" class="icon">
+                        <span class="link-text">Sensorial</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/catalogo?categoria=Educativa" class="nav-link">
+                        <img src="../images/abra-o-livro.png" alt="#" class="icon">
+                        <span class="link-text">Educativa</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/catalogo?categoria=AtividadeFisica" class="nav-link">
+                        <img src="../images/modo-esporte.png" alt="#" class="icon">
+                        <span class="link-text">Atividade Física</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/catalogo?categoria=QuebraCabeca" class="nav-link">
+                        <img src="../images/enigma.png" alt="#" class="icon">
+                        <span class="link-text">Quebra-Cabeça</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <img src="../images/definicoes.png" alt="#" class="icon">
+                        <span class="link-text">Administração (ADM)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <img src="../images/trabalho-em-equipe.png" alt="#" class="icon">
+                        <span class="link-text">Equipe</span>
+                    </a>
+                </li>
             </ul>
-        </div>
+        </section>
 
-        <div class="main">
+    
+        <main class="main">
             <!-- Área de interação -->
             <div id="breadcrumb" style="margin-bottom: 1rem;">
                 <!-- Caminho "Home > Administração" -->
                 <span th:text="'Home > Administração'"></span>
             </div>
+
+            <div class="b s1">.</div>
+            <div class="b s2">.</div>
+            <div class="b s3">.</div>
 
             <h2>Lista de Produtos</h2>
 
@@ -109,13 +128,13 @@
             </table>
 
             <!-- Botão Novo Cadastro de Produto -->
-            <div style="margin-top: 20px;">
+            <div>
                 <a th:href="@{/novo}" class="acao-btn novo-btn">Novo Cadastro de Produto</a>
             </div>
-        </div>
+        </main>
     </div>
 
-    <footer style="background-color: #2066CF; color: white; padding: 1rem; text-align: center;">
+    <footer>
         &copy; 2023 Mary's Play Haven. Todos os direitos reservados.
     </footer>
 </body>
