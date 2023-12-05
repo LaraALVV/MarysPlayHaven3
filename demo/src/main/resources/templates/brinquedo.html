@@ -5,76 +5,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mary's Play Haven</title>
-    <style>
-        /* Adicione os estilos conforme necessário */
-        /* ... (Estilos anteriores) ... */
+    <link rel="stylesheet" href="../style/style.css"> <!--Link da folha de estilo (do arquivo CSS, tem que ser o caminho de onde está o arquivo)-->
+    <link rel="stylesheet" href="../style/brinquedo.css">
 
-        /* Estilos para a área de navegação de produtos */
-        .paginacao {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .paginacao a {
-            text-decoration: none;
-            color: #2066CF; /* Cor do texto da navegação */
-            padding: 0.5rem;
-            border: 1px solid #2066CF; /* Cor da borda da navegação */
-            border-radius: 5px;
-        }
-
-        .paginacao a:hover {
-            background-color: #2066CF;
-            color: white;
-        }
-    </style>
 </head>
 
 <body>
+    
+    <header>
+        <nav class="nav">
+              <img src="../images/blocos.png" class="logo">
+              <h1 class="titulo">Mary's<br><span class="mary">Play Haven</span></h1>
+        </nav>        
+    </header>
+
     <div class="container">
-        <header style="background-color: #EFD6FF; color: black; padding: 1rem; text-align: center;">
-            <h1>Mary's Play Haven</h1>
-        </header>
 
-        <div class="sidebar">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#" th:href="@{/catalogo?categoria=Musical}">Musical</a></li>
-                <li><a href="#" th:href="@{/catalogo?categoria=Imaginativo}">Imaginativo</a></li>
-                <li><a href="#" th:href="@{/catalogo?categoria=Sensorial}">Sensorial</a></li>
-                <li><a href="#" th:href="@{/catalogo?categoria=Educativa}">Educativa</a></li>
-                <li><a href="#" th:href="@{/catalogo?categoria=AtividadeFisica}">Atividade Física</a></li>
-                <li><a href="#" th:href="@{/catalogo?categoria=QuebraCabeca}">Quebra-Cabeça</a></li>
-                <li><a href="#">Administração (ADM)</a></li>
-                <li><a href="#">Equipe</a></li>
+        <section class="sidebar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <img src="../images/botao-de-inicio.png" alt="#" class="icon">
+                        <span class="link-text">Home</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" th:href="@{/catalogo?categoria=Musical}" class="nav-link">
+                        <img src="../images/nota-musical.png" alt="#" class="icon">
+                        <span class="link-text">Musical</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" th:href="@{/catalogo?categoria=Imaginativo}" class="nav-link">
+                        <img src="../images/varinha-magica.png" alt="#" class="icon">
+                        <span class="link-text">Imaginativo</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" th:href="@{/catalogo?categoria=Sensorial}" class="nav-link">
+                        <img src="../images/cerebro-humano.png" alt="#" class="icon">
+                        <span class="link-text">Sensorial</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" th:href="@{/catalogo?categoria=Educativa}" class="nav-link">
+                        <img src="../images/abra-o-livro.png" alt="#" class="icon">
+                        <span class="link-text">Educativa</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" th:href="@{/catalogo?categoria=AtividadeFisica}" class="nav-link">
+                        <img src="../images/modo-esporte.png" alt="#" class="icon">
+                        <span class="link-text">Atividade Física</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" th:href="@{/catalogo?categoria=QuebraCabeca}" class="nav-link">
+                        <img src="../images/enigma.png" alt="#" class="icon">
+                        <span class="link-text">Quebra-Cabeça</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <img src="../images/definicoes.png" alt="#" class="icon">
+                        <span class="link-text">Administração (ADM)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <img src="../images/trabalho-em-equipe.png" alt="#" class="icon">
+                        <span class="link-text">Equipe</span>
+                    </a>
+                </li>
             </ul>
-        </div>
+        </section>
 
-        <div class="main">
+        <main class="main">
             <!-- Área de interação -->
-            <div id="breadcrumb" style="margin-bottom: 1rem;">
+            <div id="breadcrumb">
                 <span th:text="'Home > ' + ${categoria} + ' > ' + ${detalhesBrinquedo.nome}"></span>
             </div>
+
+            <div class="b s1">.</div>
+            <div class="b s2">.</div>
+            <div class="b s3">.</div>
 
             <h2>Detalhes do Brinquedo</h2>
 
             <!-- Área de detalhes do brinquedo -->
             <div id="detalhes-brinquedo">
                 <!-- Os detalhes do brinquedo serão carregados dinamicamente aqui pelo Thymeleaf -->
-                <p>Categoria: <span th:text="${detalhesBrinquedo.categoria}"></span></p>
-                <h3 th:text="${detalhesBrinquedo.nome + ' - ' + detalhesBrinquedo.codigo}"></h3>
-                <img th:src="${detalhesBrinquedo.imagemCaminho}" th:alt="'Imagem do ' + ${detalhesBrinquedo.nome}" />
-                <p th:text="'Benefícios: ' + ${#strings.listJoin(detalhesBrinquedo.beneficios, ', ')}"></p>
-                <p th:text="'Marca: ' + ${detalhesBrinquedo.marca}"></p>
-                <p th:text="'Valor: R$' + ${#numbers.formatDecimal(detalhesBrinquedo.valor, 2, 'COMMA', 3, 'POINT')}"></p>
-                <p th:text="${detalhesBrinquedo.descricao}"></p>
+                <p class="categoria">Categoria: <span th:text="${detalhesBrinquedo.categoria}"></span></p>
+                <h3 th:text="${detalhesBrinquedo.nome + ' - ' + detalhesBrinquedo.codigo}" class="nome"></h3>
+                <section class="container-brinquedo">
+                    <img th:src="${detalhesBrinquedo.imagemCaminho}" th:alt="'Imagem do ' + ${detalhesBrinquedo.nome}" class="img-brinquedo"/>
+                    <div class="container-info">
+                        <p th:text="'Benefícios: ' + ${#strings.listJoin(detalhesBrinquedo.beneficios, ', ')}"></p>
+                        <div class="info">
+                            <p th:text="'Marca: ' + ${detalhesBrinquedo.marca}" class="marca"></p>
+                            <p th:text="'Valor: R$' + ${#numbers.formatDecimal(detalhesBrinquedo.valor, 2, 'COMMA', 3, 'POINT')}" class="value"></p>
+                        </div>                
+                    </div>                
+                </section>                
+                <p th:text="${detalhesBrinquedo.descricao}" class="descricao"></p>
             </div>
         </div>
     </div>
 
-    <footer style="background-color: #2066CF; color: white; padding: 1rem; text-align: center;">
+    <footer>
         &copy; 2023 Mary's Play Haven. Todos os direitos reservados.
     </footer>
 </body>

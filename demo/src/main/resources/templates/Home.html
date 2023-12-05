@@ -5,100 +5,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mary's Play Haven</title>
-    <style>
-        /* Estilos anteriores */
-
-        /* Estilos para a área de navegação de produtos */
-        .paginacao {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .paginacao a {
-            text-decoration: none;
-            color: #2066CF;
-            padding: 0.5rem;
-            border: 1px solid #2066CF;
-            border-radius: 5px;
-        }
-
-        .paginacao a:hover {
-            background-color: #2066CF;
-            color: white;
-        }
-
-        /* Estilos para os produtos no catálogo */
-        .produto-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        .produto {
-            width: 23%;
-            margin-bottom: 2rem;
-            border: 1px solid #ccc;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .produto img {
-            width: 100%;
-            height: auto;
-        }
-
-        .produto button {
-            background-color: #2066CF;
-            color: white;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .produto button:hover {
-            background-color: #4CAF50;
-        }
-    </style>
+    <link rel="stylesheet" href="../style/style.css"> <!--Link da folha de estilo (do arquivo CSS, tem que ser o caminho de onde está o arquivo)-->
+   
 </head>
 
 <body>
-    <header style="background-color: #EFD6FF; color: black;">
-        <h1>Mary's Play Haven</h1>
-        <!-- Área para adicionar a imagem do logo -->
-        <!-- <img src="caminho/para/logo.png" alt="Logo Mary's Play Haven" /> -->
+    <header>
+        <nav class="nav">
+            <img src="../images/blocos.png" class="logo">
+            <h1 class="titulo">Mary's<br><span class="mary">Play Haven</span></h1>
+        </nav>        
     </header>
 
     <div class="container">
-        <div class="sidebar">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="/catalogo?categoria=Musical">Musical</a></li>
-                <li><a href="/catalogo?categoria=Imaginativo">Imaginativo</a></li>
-                <li><a href="/catalogo?categoria=Sensorial">Sensorial</a></li>
-                <li><a href="/catalogo?categoria=Educativa">Educativa</a></li>
-                <li><a href="/catalogo?categoria=AtividadeFisica">Atividade Física</a></li>
-                <li><a href="/catalogo?categoria=QuebraCabeca">Quebra-Cabeça</a></li>
-                <li><a href="#">Administração (ADM)</a></li>
-                <li><a href="#">Equipe</a></li>
-            </ul>
-        </div>
 
-        <div class="main">
+        <section class="sidebar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <img src="../images/botao-de-inicio.png" alt="#" class="icon">
+                        <span class="link-text">Home</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/catalogo?categoria=Musical" class="nav-link">
+                        <img src="../images/nota-musical.png" alt="#" class="icon">
+                        <span class="link-text">Musical</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/catalogo?categoria=Imaginativo" class="nav-link">
+                        <img src="../images/varinha-magica.png" alt="#" class="icon">
+                        <span class="link-text">Imaginativo</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/catalogo?categoria=Sensorial" class="nav-link">
+                        <img src="../images/cerebro-humano.png" alt="#" class="icon">
+                        <span class="link-text">Sensorial</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/catalogo?categoria=Educativa" class="nav-link">
+                        <img src="../images/abra-o-livro.png" alt="#" class="icon">
+                        <span class="link-text">Educativa</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/catalogo?categoria=AtividadeFisica" class="nav-link">
+                        <img src="../images/modo-esporte.png" alt="#" class="icon">
+                        <span class="link-text">Atividade Física</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/catalogo?categoria=QuebraCabeca" class="nav-link">
+                        <img src="../images/enigma.png" alt="#" class="icon">
+                        <span class="link-text">Quebra-Cabeça</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <img src="../images/definicoes.png" alt="#" class="icon">
+                        <span class="link-text">Administração (ADM)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <img src="../images/trabalho-em-equipe.png" alt="#" class="icon">
+                        <span class="link-text">Equipe</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <main class="main">
             <h2>Produtos</h2>
+
+            <div class="b s1">.</div>
+            <div class="b s2">.</div>
+            <div class="b s3">.</div>
 
             <!-- Espaço onde os produtos serão exibidos -->
             <div id="brinquedos-container" class="produto-container">
                 <!-- Iteração sobre os produtos -->
                 <div th:each="produto, iterStat : ${produtos}" th:if="${iterStat.index >= (currentPage - 1) * produtosPorPagina and iterStat.index < currentPage * produtosPorPagina}">
                     <div class="produto">
-                        <img th:src="${produto.imagemCaminho}" th:alt="'Imagem do ' + ${produto.nome}" />
-                        <h3 th:text="${produto.nome}"></h3>
-                        <p th:text="'Preço: R$' + ${#numbers.formatDecimal(produto.preco, 2, 'COMMA', 3, 'POINT')}"</p>
+                        <img th:src="${produto.imagemCaminho}" th:alt="'Imagem do ' + ${produto.nome}" class="foto"/>
+                        <h3 th:text="${produto.nome}" class="brinquedo"></h3>
+                        <p th:text="'Preço: R$' + ${#numbers.formatDecimal(produto.preco, 2, 'COMMA', 3, 'POINT')}" class="valor"></p>
                         <a th:href="'/detalhes?produtoId=' + ${produto.id}">
-                            <button>+ Informações</button>
+                            <button class="btn">+ Informações</button>
                         </a>
                     </div>
                 </div>
@@ -109,10 +113,10 @@
                 <a th:if="${currentPage > 1}" th:href="@{'/?page=' + (currentPage - 1)}">&laquo; Anterior</a>
                 <a th:if="${currentPage < totalPages}" th:href="@{'/?page=' + (currentPage + 1)}">Próxima &raquo;</a>
             </div>
-        </div>
+        </main>
     </div>
 
-    <footer style="background-color: #2066CF; color: white; padding: 1rem; text-align: center;">
+    <footer>
         &copy; 2023 Mary's Play Haven. Todos os direitos reservados.
     </footer>
 </body>
