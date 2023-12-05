@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mary's Play Haven</title>
+    <style>
+        /* Adicione os estilos conforme necessário */
+        /* ... (Estilos anteriores) ... */
+
+        /* Estilos para a área de navegação de produtos */
+        .paginacao {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .paginacao a {
+            text-decoration: none;
+            color: #2066CF; /* Cor do texto da navegação */
+            padding: 0.5rem;
+            border: 1px solid #2066CF; /* Cor da borda da navegação */
+            border-radius: 5px;
+        }
+
+        .paginacao a:hover {
+            background-color: #2066CF;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header style="background-color: #EFD6FF; color: black; padding: 1rem; text-align: center;">
+            <h1>Mary's Play Haven</h1>
+        </header>
+
+        <div class="sidebar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#" th:href="@{/catalogo?categoria=Musical}">Musical</a></li>
+                <li><a href="#" th:href="@{/catalogo?categoria=Imaginativo}">Imaginativo</a></li>
+                <li><a href="#" th:href="@{/catalogo?categoria=Sensorial}">Sensorial</a></li>
+                <li><a href="#" th:href="@{/catalogo?categoria=Educativa}">Educativa</a></li>
+                <li><a href="#" th:href="@{/catalogo?categoria=AtividadeFisica}">Atividade Física</a></li>
+                <li><a href="#" th:href="@{/catalogo?categoria=QuebraCabeca}">Quebra-Cabeça</a></li>
+                <li><a href="#">Administração (ADM)</a></li>
+                <li><a href="#">Equipe</a></li>
+            </ul>
+        </div>
+
+        <div class="main">
+            <!-- Área de interação -->
+            <div id="breadcrumb" style="margin-bottom: 1rem;">
+                <span th:text="'Home > ' + ${categoria} + ' > ' + ${detalhesBrinquedo.nome}"></span>
+            </div>
+
+            <h2>Detalhes do Brinquedo</h2>
+
+            <!-- Área de detalhes do brinquedo -->
+            <div id="detalhes-brinquedo">
+                <!-- Os detalhes do brinquedo serão carregados dinamicamente aqui pelo Thymeleaf -->
+                <p>Categoria: <span th:text="${detalhesBrinquedo.categoria}"></span></p>
+                <h3 th:text="${detalhesBrinquedo.nome + ' - ' + detalhesBrinquedo.codigo}"></h3>
+                <img th:src="${detalhesBrinquedo.imagemCaminho}" th:alt="'Imagem do ' + ${detalhesBrinquedo.nome}" />
+                <p th:text="'Benefícios: ' + ${#strings.listJoin(detalhesBrinquedo.beneficios, ', ')}"></p>
+                <p th:text="'Marca: ' + ${detalhesBrinquedo.marca}"></p>
+                <p th:text="'Valor: R$' + ${#numbers.formatDecimal(detalhesBrinquedo.valor, 2, 'COMMA', 3, 'POINT')}"></p>
+                <p th:text="${detalhesBrinquedo.descricao}"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background-color: #2066CF; color: white; padding: 1rem; text-align: center;">
+        &copy; 2023 Mary's Play Haven. Todos os direitos reservados.
+    </footer>
+</body>
+
+</html>

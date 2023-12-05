@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mary's Play Haven</title>
+    <style>
+        /* Estilos anteriores */
+
+        /* Estilos para a área de navegação de produtos */
+        .paginacao {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .paginacao a {
+            text-decoration: none;
+            color: #2066CF;
+            padding: 0.5rem;
+            border: 1px solid #2066CF;
+            border-radius: 5px;
+        }
+
+        .paginacao a:hover {
+            background-color: #2066CF;
+            color: white;
+        }
+
+        /* Estilos para os produtos no catálogo */
+        .produto-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .produto {
+            width: 23%;
+            margin-bottom: 2rem;
+            border: 1px solid #ccc;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .produto img {
+            width: 100%;
+            height: auto;
+        }
+
+        .produto button {
+            background-color: #2066CF;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .produto button:hover {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+
+<body>
+    <header style="background-color: #EFD6FF; color: black;">
+        <h1>Mary's Play Haven</h1>
+        <!-- Área para adicionar a imagem do logo -->
+        <!-- <img src="caminho/para/logo.png" alt="Logo Mary's Play Haven" /> -->
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="/catalogo?categoria=Musical">Musical</a></li>
+                <li><a href="/catalogo?categoria=Imaginativo">Imaginativo</a></li>
+                <li><a href="/catalogo?categoria=Sensorial">Sensorial</a></li>
+                <li><a href="/catalogo?categoria=Educativa">Educativa</a></li>
+                <li><a href="/catalogo?categoria=AtividadeFisica">Atividade Física</a></li>
+                <li><a href="/catalogo?categoria=QuebraCabeca">Quebra-Cabeça</a></li>
+                <li><a href="#">Administração (ADM)</a></li>
+                <li><a href="#">Equipe</a></li>
+            </ul>
+        </div>
+
+        <div class="main">
+            <h2>Produtos</h2>
+
+            <!-- Espaço onde os produtos serão exibidos -->
+            <div id="brinquedos-container" class="produto-container">
+                <!-- Iteração sobre os produtos -->
+                <div th:each="produto, iterStat : ${produtos}" th:if="${iterStat.index >= (currentPage - 1) * produtosPorPagina and iterStat.index < currentPage * produtosPorPagina}">
+                    <div class="produto">
+                        <img th:src="${produto.imagemCaminho}" th:alt="'Imagem do ' + ${produto.nome}" />
+                        <h3 th:text="${produto.nome}"></h3>
+                        <p th:text="'Preço: R$' + ${#numbers.formatDecimal(produto.preco, 2, 'COMMA', 3, 'POINT')}"</p>
+                        <a th:href="'/detalhes?produtoId=' + ${produto.id}">
+                            <button>+ Informações</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navegação entre as páginas -->
+            <div class="paginacao">
+                <a th:if="${currentPage > 1}" th:href="@{'/?page=' + (currentPage - 1)}">&laquo; Anterior</a>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/?page=' + (currentPage + 1)}">Próxima &raquo;</a>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background-color: #2066CF; color: white; padding: 1rem; text-align: center;">
+        &copy; 2023 Mary's Play Haven. Todos os direitos reservados.
+    </footer>
+</body>
+
+</html>
